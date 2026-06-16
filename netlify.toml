@@ -1,0 +1,8 @@
+# Deploy only the static preview (no Shopify backend required).
+[build]
+  publish = "preview"
+
+[[redirects]]
+  from = "/product"
+  to = "/product.html"
+  status = 200

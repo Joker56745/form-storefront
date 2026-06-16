@@ -1,0 +1,59 @@
+<section class="form-section">
+  <div class="form-container">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="form-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+    {%- endif -%}
+    <h2 class="form-heading" style="margin-bottom: 2rem;">{{ section.settings.heading | escape }}</h2>
+
+    <div class="form-benefits">
+      {%- for block in section.blocks -%}
+        <article class="form-benefit" {{ block.shopify_attributes }}>
+          <div class="form-benefit__icon" aria-hidden="true">{{ block.settings.icon | escape }}</div>
+          <h3 class="form-benefit__title">{{ block.settings.title | escape }}</h3>
+          <p class="form-benefit__text">{{ block.settings.text | escape }}</p>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Benefits",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Why FORM"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Built for trust, not trends"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Icon (emoji)", "default": "◆" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Transparent labels" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Every ingredient at clinical doses — no proprietary blends hiding behind marketing." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefits",
+      "blocks": [
+        { "type": "benefit", "settings": { "icon": "◆", "title": "Transparent labels", "text": "Every ingredient at clinical doses — no proprietary blends." } },
+        { "type": "benefit", "settings": { "icon": "◇", "title": "Third-party tested", "text": "Independent labs verify potency, purity, and heavy metals on every batch." } },
+        { "type": "benefit", "settings": { "icon": "○", "title": "Designed for daily use", "text": "Gentle formats, clear directions, and stacks that work together." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

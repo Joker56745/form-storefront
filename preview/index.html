@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="FORM — clinical-grade vitamins with transparent labels and third-party testing.">
+    <title>FORM — Nutrition, distilled to what works.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="preview.css">
+  </head>
+  <body class="form-body">
+    <a class="form-skip-link" href="#main">Skip to content</a>
+
+    <main id="main">
+      <section class="form-hero">
+        <div class="form-container form-hero__grid">
+          <div>
+            <span class="form-hero__badge">New · Daily Essentials</span>
+            <h1 class="form-heading form-hero__title">Nutrition, distilled to what works.</h1>
+            <p class="form-lead">
+              FORM makes clinical-grade vitamins with transparent labels, third-party testing, and formulas designed for everyday consistency — not hype.
+            </p>
+            <div class="form-hero__actions">
+              <a href="shop.html" class="form-btn form-btn--primary">Shop formulas</a>
+              <a href="#science" class="form-btn form-btn--secondary">How we formulate</a>
+            </div>
+            <div class="form-hero__trust">
+              <div class="form-hero__trust-item"><strong>Third-party tested</strong>Every batch, every SKU</div>
+              <div class="form-hero__trust-item"><strong>No fillers</strong>Active ingredients only</div>
+              <div class="form-hero__trust-item"><strong>Subscribe & save</strong>15% off first order</div>
+            </div>
+          </div>
+          <div class="form-hero__visual form-hero__visual--placeholder" aria-hidden="true">
+            <span>FORM</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-section form-section--surface">
+        <div class="form-container">
+          <div class="form-section__head">
+            <div>
+              <p class="form-eyebrow">Daily formulas</p>
+              <h2 class="form-heading">Core stack</h2>
+            </div>
+            <a href="shop.html" class="form-btn form-btn--secondary">View all</a>
+          </div>
+          <div class="form-product-grid" data-form-products data-limit="4"></div>
+        </div>
+      </section>
+
+      <section class="form-section" id="about">
+        <div class="form-container">
+          <p class="form-eyebrow">Why FORM</p>
+          <h2 class="form-heading" style="margin-bottom: 2rem;">Built for trust, not trends</h2>
+          <div class="form-benefits" id="benefits-grid"></div>
+        </div>
+      </section>
+
+      <section class="form-section form-section--surface" id="science">
+        <div class="form-container form-story">
+          <div>
+            <p class="form-eyebrow">Formulation</p>
+            <h2 class="form-heading">Only what your body can use.</h2>
+            <p class="form-lead" style="margin-top: 1rem;">
+              We source bioavailable forms, publish full supplement facts, and formulate with clinicians — not influencers.
+            </p>
+            <ul class="form-story__list" id="story-points"></ul>
+            <a href="shop.html" class="form-btn form-btn--primary" style="margin-top: 1.75rem;">Explore formulas</a>
+          </div>
+          <div class="form-hero__visual form-hero__visual--placeholder">
+            <span>FORM</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <div class="form-container">
+          <div class="form-newsletter">
+            <h2 class="form-heading">Join the ritual</h2>
+            <p class="form-lead">Science-backed notes on sleep, focus, and daily nutrition — no spam.</p>
+            <form class="form-newsletter__form" onsubmit="event.preventDefault(); alert('Preview only — newsletter not connected.');">
+              <label class="visually-hidden" for="email">Email</label>
+              <input id="email" class="form-newsletter__input" type="email" placeholder="Email address" required>
+              <button type="submit" class="form-btn form-btn--secondary">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <span class="form-preview-badge" style="position:fixed;bottom:1rem;right:1rem;z-index:50;margin:0;">Static preview</span>
+
+    <script src="data.js"></script>
+    <script src="shell.js"></script>
+    <script>FORM_renderShell();</script>
+    <script>
+      document.getElementById('benefits-grid').innerHTML = FORM.benefits.map(b => `
+        <article class="form-benefit">
+          <div class="form-benefit__icon" aria-hidden="true">${b.icon}</div>
+          <h3 class="form-benefit__title">${b.title}</h3>
+          <p class="form-benefit__text">${b.text}</p>
+        </article>`).join('');
+      document.getElementById('story-points').innerHTML = FORM.story.points.map(p => `<li>${p}</li>`).join('');
+    </script>
+    <script src="app.js"></script>
+  </body>
+</html>

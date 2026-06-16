@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="FORM — our formulation standards, testing protocols, and sourcing principles.">
+    <title>Our Standards — FORM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="preview.css">
+    <style>
+      .sci-hero {
+        padding: clamp(3rem, 8vw, 6rem) 0;
+        border-bottom: 1px solid var(--form-border);
+      }
+      .sci-hero__label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--form-accent);
+        margin-bottom: 1rem;
+      }
+      .sci-hero__lead {
+        font-size: clamp(1rem, 2vw, 1.125rem);
+        color: var(--form-muted);
+        max-width: 42rem;
+        margin-top: 1.25rem;
+        line-height: 1.75;
+      }
+
+      /* Principles grid */
+      .sci-principles {
+        display: grid;
+        gap: 1px;
+        background: var(--form-border);
+        border: 1px solid var(--form-border);
+        border-radius: var(--form-radius-lg);
+        overflow: hidden;
+        margin-top: 2.5rem;
+      }
+      @media (min-width: 768px) {
+        .sci-principles { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (min-width: 1100px) {
+        .sci-principles { grid-template-columns: repeat(3, 1fr); }
+      }
+      .sci-principle {
+        background: var(--form-surface);
+        padding: 2rem;
+      }
+      .sci-principle__num {
+        font-family: var(--form-font-serif);
+        font-size: 2rem;
+        font-weight: 500;
+        color: var(--form-accent);
+        margin-bottom: 0.75rem;
+        line-height: 1;
+      }
+      .sci-principle__title {
+        font-family: var(--form-font-serif);
+        font-size: 1.25rem;
+        margin: 0 0 0.75rem;
+      }
+      .sci-principle__text {
+        font-size: 0.9375rem;
+        color: var(--form-muted);
+        margin: 0;
+        line-height: 1.7;
+      }
+
+      /* Testing section */
+      .sci-testing {
+        padding: clamp(3rem, 6vw, 5rem) 0;
+      }
+      .sci-testing__grid {
+        display: grid;
+        gap: 2.5rem;
+        align-items: center;
+        margin-top: 2rem;
+      }
+      @media (min-width: 900px) {
+        .sci-testing__grid { grid-template-columns: 1fr 1fr; }
+      }
+      .sci-testing__steps {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 0;
+      }
+      .sci-testing__step {
+        display: grid;
+        grid-template-columns: 2.5rem 1fr;
+        gap: 1rem;
+        padding: 1.25rem 0;
+        border-bottom: 1px solid var(--form-border);
+        align-items: start;
+      }
+      .sci-testing__step:last-child { border-bottom: none; }
+      .sci-testing__step-num {
+        font-family: var(--form-font-serif);
+        font-size: 1.25rem;
+        color: var(--form-accent);
+        font-weight: 500;
+        line-height: 1.3;
+      }
+      .sci-testing__step-title {
+        font-weight: 600;
+        font-size: 0.9375rem;
+        margin: 0 0 0.25rem;
+      }
+      .sci-testing__step-text {
+        font-size: 0.875rem;
+        color: var(--form-muted);
+        margin: 0;
+        line-height: 1.6;
+      }
+      .sci-testing__panel {
+        background: var(--form-accent-soft);
+        border-radius: var(--form-radius-lg);
+        padding: 2rem;
+        display: grid;
+        gap: 1.5rem;
+      }
+      .sci-testing__stat { }
+      .sci-testing__stat-num {
+        font-family: var(--form-font-serif);
+        font-size: 2.5rem;
+        font-weight: 500;
+        color: var(--form-accent-dark);
+        line-height: 1;
+        margin-bottom: 0.25rem;
+      }
+      .sci-testing__stat-label {
+        font-size: 0.875rem;
+        color: var(--form-muted);
+      }
+
+      /* Sourcing table */
+      .sci-sourcing {
+        padding: clamp(3rem, 6vw, 5rem) 0;
+        background: var(--form-surface);
+        border-top: 1px solid var(--form-border);
+      }
+      .sci-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 2rem;
+        font-size: 0.9375rem;
+      }
+      .sci-table th {
+        text-align: left;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--form-muted);
+        padding: 0.75rem 1rem;
+        border-bottom: 2px solid var(--form-border);
+      }
+      .sci-table td {
+        padding: 1rem;
+        border-bottom: 1px solid var(--form-border);
+        vertical-align: top;
+      }
+      .sci-table tr:last-child td { border-bottom: none; }
+      .sci-table td:first-child { font-weight: 600; }
+      .sci-table td:last-child { color: var(--form-muted); font-size: 0.875rem; }
+      .sci-badge {
+        display: inline-block;
+        font-size: 0.6875rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        padding: 0.2rem 0.6rem;
+        border-radius: 999px;
+        background: var(--form-accent-soft);
+        color: var(--form-accent-dark);
+        white-space: nowrap;
+      }
+
+      /* CTA */
+      .sci-cta {
+        padding: clamp(3rem, 8vw, 5rem);
+        background: var(--form-accent);
+        color: #fff;
+        border-radius: var(--form-radius-lg);
+        text-align: center;
+        margin: clamp(3rem, 6vw, 5rem) 0;
+      }
+      .sci-cta .form-heading { color: #fff; }
+      .sci-cta p { color: rgba(255,255,255,0.8); margin: 1rem auto 0; max-width: 36rem; }
+      .sci-cta .form-btn--secondary { border-color: rgba(255,255,255,0.5); color: #fff; margin-top: 2rem; }
+      .sci-cta .form-btn--secondary:hover { background: #fff; color: var(--form-accent-dark); }
+    </style>
+  </head>
+  <body class="form-body">
+
+    <main>
+      <!-- Hero -->
+      <section class="sci-hero">
+        <div class="form-container">
+          <p class="sci-hero__label">Our standards</p>
+          <h1 class="form-heading">Science first.<br>No exceptions.</h1>
+          <p class="sci-hero__lead">
+            Every FORM formula starts with a clinical question, not a marketing brief.
+            We pick the bioavailable form, dose to evidence thresholds, and publish
+            the full supplement facts — no proprietary blends, no hidden fillers.
+          </p>
+
+          <div class="sci-principles">
+            <div class="sci-principle">
+              <p class="sci-principle__num">01</p>
+              <h2 class="sci-principle__title">Bioavailable forms only</h2>
+              <p class="sci-principle__text">Magnesium glycinate over oxide. Methylcobalamin over cyanocobalamin. Cholecalciferol over ergocalciferol. The research-backed form, always.</p>
+            </div>
+            <div class="sci-principle">
+              <p class="sci-principle__num">02</p>
+              <h2 class="sci-principle__title">Clinical doses</h2>
+              <p class="sci-principle__text">We dose to the levels used in peer-reviewed trials — not token amounts that make the label look full but do nothing physiologically.</p>
+            </div>
+            <div class="sci-principle">
+              <p class="sci-principle__num">03</p>
+              <h2 class="sci-principle__title">Transparent labels</h2>
+              <p class="sci-principle__text">Full supplement facts on every product. No proprietary blends. No "matrix" language hiding underdosed ingredients.</p>
+            </div>
+            <div class="sci-principle">
+              <p class="sci-principle__num">04</p>
+              <h2 class="sci-principle__title">No unnecessary additives</h2>
+              <p class="sci-principle__text">No titanium dioxide, no artificial dyes, no magnesium stearate in critical products. Excipients only where functionally necessary.</p>
+            </div>
+            <div class="sci-principle">
+              <p class="sci-principle__num">05</p>
+              <h2 class="sci-principle__title">Third-party verified</h2>
+              <p class="sci-principle__text">Every batch is tested by an independent ISO-certified laboratory for identity, potency, and heavy metal contamination before it ships.</p>
+            </div>
+            <div class="sci-principle">
+              <p class="sci-principle__num">06</p>
+              <h2 class="sci-principle__title">COA on request</h2>
+              <p class="sci-principle__text">Certificate of analysis for every production batch. Email us a batch number — we respond within 24 hours.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testing -->
+      <section class="sci-testing">
+        <div class="form-container">
+          <p class="form-eyebrow">Testing protocol</p>
+          <h2 class="form-heading" style="margin-top:0.25rem">From raw material to your door</h2>
+
+          <div class="sci-testing__grid">
+            <ol class="sci-testing__steps">
+              <li class="sci-testing__step">
+                <span class="sci-testing__step-num">1</span>
+                <div>
+                  <p class="sci-testing__step-title">Ingredient sourcing audit</p>
+                  <p class="sci-testing__step-text">Suppliers must provide third-party CoA, GMP certification, and origin documentation before we place an order.</p>
+                </div>
+              </li>
+              <li class="sci-testing__step">
+                <span class="sci-testing__step-num">2</span>
+                <div>
+                  <p class="sci-testing__step-title">Incoming material testing</p>
+                  <p class="sci-testing__step-text">Every raw ingredient is re-tested by our contract lab for identity and potency on arrival — regardless of supplier CoA.</p>
+                </div>
+              </li>
+              <li class="sci-testing__step">
+                <span class="sci-testing__step-num">3</span>
+                <div>
+                  <p class="sci-testing__step-title">In-process QC</p>
+                  <p class="sci-testing__step-text">Blend uniformity and weight variation checked at regular intervals throughout production.</p>
+                </div>
+              </li>
+              <li class="sci-testing__step">
+                <span class="sci-testing__step-num">4</span>
+                <div>
+                  <p class="sci-testing__step-title">Finished product panel</p>
+                  <p class="sci-testing__step-text">Potency, dissolution, heavy metals (Pb, Cd, As, Hg), and microbial limits on every finished batch.</p>
+                </div>
+              </li>
+              <li class="sci-testing__step">
+                <span class="sci-testing__step-num">5</span>
+                <div>
+                  <p class="sci-testing__step-title">Release &amp; archiving</p>
+                  <p class="sci-testing__step-text">Batch released only after lab sign-off. CoA archived and available to any customer on request.</p>
+                </div>
+              </li>
+            </ol>
+
+            <div class="sci-testing__panel">
+              <div class="sci-testing__stat">
+                <p class="sci-testing__stat-num">100%</p>
+                <p class="sci-testing__stat-label">of batches third-party tested before release</p>
+              </div>
+              <div class="sci-testing__stat">
+                <p class="sci-testing__stat-num">&lt;0.1 µg/g</p>
+                <p class="sci-testing__stat-label">heavy metal limit (well below USP threshold)</p>
+              </div>
+              <div class="sci-testing__stat">
+                <p class="sci-testing__stat-num">±5%</p>
+                <p class="sci-testing__stat-label">maximum potency variance from label claim</p>
+              </div>
+              <div class="sci-testing__stat">
+                <p class="sci-testing__stat-num">24 h</p>
+                <p class="sci-testing__stat-label">CoA response time on any batch number</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sourcing table -->
+      <section class="sci-sourcing">
+        <div class="form-container">
+          <p class="form-eyebrow">Ingredient sourcing</p>
+          <h2 class="form-heading" style="margin-top:0.25rem">Form matters as much as dose</h2>
+
+          <div style="overflow-x:auto">
+            <table class="sci-table">
+              <thead>
+                <tr>
+                  <th>Ingredient</th>
+                  <th>Form used</th>
+                  <th>Why this form</th>
+                  <th>Avoided</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Magnesium</td>
+                  <td><span class="sci-badge">Glycinate</span></td>
+                  <td>Highest bioavailability, no laxative effect at therapeutic doses</td>
+                  <td>Oxide, citrate only</td>
+                </tr>
+                <tr>
+                  <td>Vitamin D</td>
+                  <td><span class="sci-badge">D3 cholecalciferol</span></td>
+                  <td>Raises serum 25(OH)D ~3× more effectively than D2</td>
+                  <td>D2 ergocalciferol</td>
+                </tr>
+                <tr>
+                  <td>Vitamin K2</td>
+                  <td><span class="sci-badge">MK-7 menaquinone</span></td>
+                  <td>Longer half-life; better directs calcium away from arteries</td>
+                  <td>MK-4 (short half-life)</td>
+                </tr>
+                <tr>
+                  <td>Vitamin B12</td>
+                  <td><span class="sci-badge">Methylcobalamin</span></td>
+                  <td>Active form — no conversion step required by the body</td>
+                  <td>Cyanocobalamin</td>
+                </tr>
+                <tr>
+                  <td>Omega-3</td>
+                  <td><span class="sci-badge">Triglyceride form</span></td>
+                  <td>~70% better absorption vs ethyl ester; more stable at room temp</td>
+                  <td>Ethyl ester concentrate</td>
+                </tr>
+                <tr>
+                  <td>Zinc</td>
+                  <td><span class="sci-badge">Bisglycinate</span></td>
+                  <td>Chelated form — lower GI irritation, higher absorption</td>
+                  <td>Zinc oxide, sulfate</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <div class="form-container">
+        <div class="sci-cta">
+          <h2 class="form-heading">Ready to start your stack?</h2>
+          <p>Four formulas. Built to work together. No guesswork.</p>
+          <a href="shop.html" class="form-btn form-btn--secondary">Shop formulas</a>
+        </div>
+      </div>
+    </main>
+
+    <script src="data.js"></script>
+    <script src="shell.js"></script>
+    <script>FORM_renderShell({ active: 'science' });</script>
+    <script src="app.js"></script>
+  </body>
+</html>

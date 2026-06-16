@@ -1,0 +1,29 @@
+<a href="{{ product.url }}" class="form-product-card">
+  <div class="form-product-card__media">
+    {%- if product.featured_image != blank -%}
+      {{
+        product.featured_image
+        | image_url: width: 600
+        | image_tag: loading: 'lazy', widths: '300,400,600', sizes: '(min-width: 700px) 25vw, 50vw', alt: product.featured_image.alt
+      }}
+    {%- endif -%}
+  </div>
+  <div class="form-product-card__body">
+    {%- if product.type != blank -%}
+      <span class="form-product-card__tag">{{ product.type | escape }}</span>
+    {%- endif -%}
+    <h3 class="form-product-card__title">{{ product.title | escape }}</h3>
+    {%- if product.metafields.custom.short_description != blank -%}
+      <p class="form-product-card__meta">{{ product.metafields.custom.short_description | escape }}</p>
+    {%- elsif product.description != blank -%}
+      <p class="form-product-card__meta">{{ product.description | strip_html | truncate: 72 }}</p>
+    {%- endif -%}
+    <p class="form-product-card__price">
+      {%- if product.price_varies -%}
+        From {{ product.price_min | money }}
+      {%- else -%}
+        {{ product.price | money }}
+      {%- endif -%}
+    </p>
+  </div>
+</a>

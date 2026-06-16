@@ -1,0 +1,87 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "blocks": {
+        "trust-1": {
+          "type": "trust",
+          "settings": {
+            "label": "Third-party tested",
+            "value": "Every batch, every SKU"
+          }
+        },
+        "trust-2": {
+          "type": "trust",
+          "settings": {
+            "label": "No fillers",
+            "value": "Active ingredients only"
+          }
+        },
+        "trust-3": {
+          "type": "trust",
+          "settings": {
+            "label": "Subscribe & save",
+            "value": "15% off first order"
+          }
+        }
+      },
+      "block_order": ["trust-1", "trust-2", "trust-3"],
+      "settings": {
+        "badge": "New · Daily Essentials",
+        "heading": "Nutrition, distilled to what works.",
+        "text": "FORM makes clinical-grade vitamins with transparent labels, third-party testing, and formulas designed for everyday consistency — not hype.",
+        "button_label": "Shop formulas",
+        "button_link": "shopify://collections/all",
+        "secondary_label": "How we formulate",
+        "secondary_link": "shopify://pages/about"
+      }
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Daily formulas",
+        "heading": "Core stack",
+        "products_to_show": 4,
+        "show_view_all": true
+      }
+    },
+    "benefits": {
+      "type": "benefits",
+      "blocks": {
+        "b1": { "type": "benefit", "settings": { "icon": "◆", "title": "Transparent labels", "text": "Every ingredient at clinical doses — no proprietary blends." } },
+        "b2": { "type": "benefit", "settings": { "icon": "◇", "title": "Third-party tested", "text": "Independent labs verify potency, purity, and heavy metals." } },
+        "b3": { "type": "benefit", "settings": { "icon": "○", "title": "Designed for daily use", "text": "Gentle formats and stacks that work together." } }
+      },
+      "block_order": ["b1", "b2", "b3"],
+      "settings": {
+        "eyebrow": "Why FORM",
+        "heading": "Built for trust, not trends"
+      }
+    },
+    "story": {
+      "type": "ingredients-story",
+      "blocks": {
+        "p1": { "type": "point", "settings": { "item": "Chelated minerals for absorption" } },
+        "p2": { "type": "point", "settings": { "item": "Delayed-release capsules where it matters" } },
+        "p3": { "type": "point", "settings": { "item": "No artificial dyes or titanium dioxide" } }
+      },
+      "block_order": ["p1", "p2", "p3"],
+      "settings": {
+        "eyebrow": "Formulation",
+        "heading": "Only what your body can use.",
+        "text": "We source bioavailable forms, publish full supplement facts, and formulate with clinicians.",
+        "button_label": "Read our standards",
+        "button_link": "shopify://pages/about"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "heading": "Join the ritual",
+        "text": "Science-backed notes on sleep, focus, and daily nutrition — no spam.",
+        "button_label": "Subscribe"
+      }
+    }
+  },
+  "order": ["hero", "featured", "benefits", "story", "newsletter"]
+}

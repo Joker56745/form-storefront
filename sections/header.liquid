@@ -1,0 +1,52 @@
+<header class="form-header" role="banner">
+  <div class="form-container form-header__inner">
+    <a href="{{ routes.root_url }}" class="form-header__logo">
+      {{ section.settings.logo_text | default: shop.name | escape }}
+    </a>
+
+    <nav class="form-header__nav" data-form-nav aria-label="Main">
+      {%- for link in linklists[section.settings.menu].links -%}
+        <a href="{{ link.url }}">{{ link.title | escape }}</a>
+      {%- endfor -%}
+    </nav>
+
+    <div class="form-header__actions">
+      <button
+        type="button"
+        class="form-menu-toggle"
+        data-form-menu-toggle
+        aria-expanded="false"
+        aria-controls="form-mobile-nav"
+      >
+        Menu
+      </button>
+      <a href="{{ routes.search_url }}" class="form-header__icon">Search</a>
+      <a href="{{ routes.cart_url }}" class="form-header__icon">
+        Cart
+        {%- if cart.item_count > 0 -%}
+          <span class="form-cart-count">{{ cart.item_count }}</span>
+        {%- endif -%}
+      </a>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo text",
+      "default": "FORM"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

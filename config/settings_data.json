@@ -1,0 +1,28 @@
+{
+  "current": {
+    "color_bg": "#f4f2ec",
+    "color_accent": "#3f6f5f",
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+          "text": "Subscribe & save 15% on your first ritual"
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo_text": "FORM",
+          "menu": "main-menu"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "brand_name": "FORM",
+          "tagline": "Clinical-grade vitamins. Transparent formulas. Daily rituals that fit real life."
+        }
+      }
+    }
+  }
+}

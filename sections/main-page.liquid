@@ -1,0 +1,15 @@
+<section class="form-section" style="padding-top: 2rem;">
+  <div class="form-container" style="max-width: 42rem;">
+    <h1 class="form-heading">{{ page.title | escape }}</h1>
+    <div class="form-pdp__desc" style="margin-top: 1.5rem;">
+      {{ page.content }}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Page",
+  "settings": []
+}
+{% endschema %}

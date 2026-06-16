@@ -1,0 +1,134 @@
+<section class="form-hero">
+  <div class="form-container form-hero__grid">
+    <div>
+      {%- if section.settings.badge != blank -%}
+        <span class="form-hero__badge">{{ section.settings.badge | escape }}</span>
+      {%- endif -%}
+
+      <h1 class="form-heading form-hero__title">{{ section.settings.heading | escape }}</h1>
+
+      {%- if section.settings.text != blank -%}
+        <p class="form-lead">{{ section.settings.text | escape }}</p>
+      {%- endif -%}
+
+      <div class="form-hero__actions">
+        {%- if section.settings.button_label != blank -%}
+          <a href="{{ section.settings.button_link }}" class="form-btn form-btn--primary">
+            {{ section.settings.button_label | escape }}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.secondary_label != blank -%}
+          <a href="{{ section.settings.secondary_link }}" class="form-btn form-btn--secondary">
+            {{ section.settings.secondary_label | escape }}
+          </a>
+        {%- endif -%}
+      </div>
+
+      <div class="form-hero__trust">
+        {%- for block in section.blocks -%}
+          <div class="form-hero__trust-item" {{ block.shopify_attributes }}>
+            <strong>{{ block.settings.label | escape }}</strong>
+            {{ block.settings.value | escape }}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <div class="form-hero__visual">
+      {%- if section.settings.image != blank -%}
+        {{
+          section.settings.image
+          | image_url: width: 1200
+          | image_tag: loading: 'eager', widths: '600,900,1200', sizes: '(min-width: 900px) 50vw, 100vw'
+        }}
+      {%- else -%}
+        <div class="form-hero__visual-placeholder">
+          Add a hero image in the theme editor — product still life or lifestyle shot works best.
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge",
+      "default": "New · Daily Essentials"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Nutrition, distilled to what works."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "FORM makes clinical-grade vitamins with transparent labels, third-party testing, and formulas designed for everyday consistency — not hype."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Primary button",
+      "default": "Shop formulas"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Secondary button",
+      "default": "How we formulate"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Secondary button link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "trust",
+      "name": "Trust point",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Third-party tested"
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "Every batch, every SKU"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero",
+      "blocks": [
+        { "type": "trust", "settings": { "label": "Third-party tested", "value": "Every batch, every SKU" } },
+        { "type": "trust", "settings": { "label": "No fillers", "value": "Active ingredients only" } },
+        { "type": "trust", "settings": { "label": "Subscribe & save", "value": "15% off first order" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

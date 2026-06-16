@@ -1,0 +1,79 @@
+<footer class="form-footer" role="contentinfo">
+  <div class="form-container">
+    <div class="form-footer__grid">
+      <div>
+        <a href="{{ routes.root_url }}" class="form-footer__brand">
+          {{ section.settings.brand_name | default: shop.name | escape }}
+        </a>
+        {%- if section.settings.tagline != blank -%}
+          <p class="form-footer__tagline">{{ section.settings.tagline | escape }}</p>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.menu_shop != blank -%}
+        <div class="form-footer__col">
+          <h3>Shop</h3>
+          <ul class="form-footer__links">
+            {%- for link in linklists[section.settings.menu_shop].links -%}
+              <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.menu_learn != blank -%}
+        <div class="form-footer__col">
+          <h3>Learn</h3>
+          <ul class="form-footer__links">
+            {%- for link in linklists[section.settings.menu_learn].links -%}
+              <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endif -%}
+
+      <div class="form-footer__col">
+        <h3>Support</h3>
+        <ul class="form-footer__links">
+          <li><a href="{{ routes.account_url }}">Account</a></li>
+          <li><a href="/policies/shipping-policy">Shipping</a></li>
+          <li><a href="/policies/refund-policy">Returns</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="form-footer__bottom">
+      &copy; {{ 'now' | date: '%Y' }} {{ shop.name | escape }}. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "Brand name",
+      "default": "FORM"
+    },
+    {
+      "type": "textarea",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Clinical-grade vitamins. Transparent formulas. Daily rituals that fit real life."
+    },
+    {
+      "type": "link_list",
+      "id": "menu_shop",
+      "label": "Shop menu"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_learn",
+      "label": "Learn menu"
+    }
+  ]
+}
+{% endschema %}

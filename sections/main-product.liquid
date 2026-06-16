@@ -1,0 +1,80 @@
+<section class="form-pdp">
+  <div class="form-container form-pdp__grid">
+    <div class="form-pdp__media">
+      {%- if product.featured_image != blank -%}
+        {{
+          product.featured_image
+          | image_url: width: 1200
+          | image_tag: loading: 'eager', widths: '600,900,1200', sizes: '(min-width: 900px) 50vw, 100vw'
+        }}
+      {%- endif -%}
+    </div>
+
+    <div>
+      {%- if product.type != blank -%}
+        <p class="form-eyebrow">{{ product.type | escape }}</p>
+      {%- endif -%}
+
+      <h1 class="form-pdp__title">{{ product.title | escape }}</h1>
+      <p class="form-pdp__price">{{ product.selected_or_first_available_variant.price | money }}</p>
+
+      {%- if product.description != blank -%}
+        <div class="form-pdp__desc">{{ product.description }}</div>
+      {%- endif -%}
+
+      {% form 'product', product, class: 'form-pdp__form', id: 'product-form' %}
+        {%- unless product.has_only_default_variant -%}
+          <div class="form-pdp__variants">
+            <label for="VariantSelect">Option</label>
+            <select id="VariantSelect" name="id">
+              {%- for variant in product.variants -%}
+                <option
+                  value="{{ variant.id }}"
+                  {% if variant == product.selected_or_first_available_variant %}selected{% endif %}
+                  {% unless variant.available %}disabled{% endunless %}
+                >
+                  {{ variant.title }} — {{ variant.price | money }}
+                </option>
+              {%- endfor -%}
+            </select>
+          </div>
+        {%- else -%}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        {%- endunless -%}
+
+        <button
+          type="submit"
+          name="add"
+          class="form-btn form-btn--primary form-btn--full"
+          {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}
+        >
+          {%- if product.selected_or_first_available_variant.available -%}
+            Add to cart
+          {%- else -%}
+            Sold out
+          {%- endif -%}
+        </button>
+      {% endform %}
+
+      <dl class="form-pdp__facts">
+        <dt>Serving</dt>
+        <dd>{{ section.settings.serving_default | escape }}</dd>
+        <dt>Format</dt>
+        <dd>{{ section.settings.format_default | escape }}</dd>
+        <dt>Testing</dt>
+        <dd>{{ section.settings.testing_default | escape }}</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product information",
+  "settings": [
+    { "type": "text", "id": "serving_default", "label": "Default serving", "default": "1 capsule daily with food" },
+    { "type": "text", "id": "format_default", "label": "Default format", "default": "60 capsules · 2-month supply" },
+    { "type": "text", "id": "testing_default", "label": "Default testing", "default": "Third-party tested for potency & purity" }
+  ]
+}
+{% endschema %}

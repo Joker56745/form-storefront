@@ -2,7 +2,7 @@
 
 Portfolio theme for a **supplement / vitamins** brand. Clean, clinical wellness aesthetic — built on **Shopify Online Store 2.0** (JSON templates + sections).
 
-Companion to the [VØID](https://github.com/) Hydrogen storefront (fashion); this project demonstrates **Liquid theme** skills for agency work.
+Companion to the [VØID](https://github.com/Joker56745/void-storefront) Hydrogen storefront (fashion); this project demonstrates **Liquid theme**
 
 ## Stack
 
